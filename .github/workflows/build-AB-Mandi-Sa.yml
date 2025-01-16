@@ -35,8 +35,11 @@ jobs:
     - name: 切换python2.7
       if: env.SWITCH_PYTHON == 'true'
       run: |
-       sudo rm -f /usr/bin/python
-       sudo ln -s /usr/bin/python2.7 /usr/bin/python
+       sudo add-apt-repository ppa:deadsnakes/ppa -y
+       sudo apt-get update
+       sudo apt-get install -y python2.7
+       sudo ln -sf /usr/bin/python2.7 /usr/bin/python2
+       echo "PYTHON=/usr/bin/python2.7" >> $GITHUB_ENV
                      
     - name: 下载 阿菌未霜 clang 编译器
       run: |
