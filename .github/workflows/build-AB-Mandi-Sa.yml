@@ -38,8 +38,11 @@ jobs:
        sudo add-apt-repository ppa:deadsnakes/ppa -y
        sudo apt-get update
        sudo apt-get install -y python2.7
+       sudo apt-get install -y python2.7-dev
        sudo ln -sf /usr/bin/python2.7 /usr/bin/python2
        echo "PYTHON=/usr/bin/python2.7" >> $GITHUB_ENV
+       ${{ env.PYTHON }} --version
+
                      
     - name: 下载 阿菌未霜 clang 编译器
       run: |
